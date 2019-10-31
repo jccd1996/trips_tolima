@@ -7,7 +7,6 @@ import 'package:trips_tolima/search_trips.dart';
 class PlatziTrips extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _PlatziTrips();
   }
 }
