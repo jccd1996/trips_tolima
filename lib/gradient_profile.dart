@@ -35,7 +35,7 @@ class GradientProfile extends StatelessWidget{
     final userDetail = Row(
       children: <Widget>[
         profile,
-        iconSettings
+        iconSettings,
       ],
     );
 

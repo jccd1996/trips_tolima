@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:trips_tolima/button_profile.dart';
 
 
 class InfoProfile extends StatelessWidget{
@@ -65,6 +66,8 @@ class InfoProfile extends StatelessWidget{
       ),
     );
 
+
+
     final userDetail = Column(
 
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,11 +76,14 @@ class InfoProfile extends StatelessWidget{
         userEmail,
       ],
     );
+
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         photo,
         userDetail,
+        //optionsProfile
       ],
     );
   }
