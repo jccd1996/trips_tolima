@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "720225698700",
+    "firebase_url": "https://tolimatrips.firebaseio.com",
+    "project_id": "tolimatrips",
+    "storage_bucket": "tolimatrips.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720225698700:android:4cfc99b7378df49b480ca9",
+        "android_client_info": {
+          "package_name": "com.jccd.trips_tolima"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720225698700-cs9aj6deu94iodrjkl6967b2qgq4af7f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jccd.trips_tolima",
+            "certificate_hash": "9c6b841417bcabdd66d1f0d13ad92bf6392dd965"
+          }
+        },
+        {
+          "client_id": "720225698700-ui6at5ask0l6gke2ua579q8k4g3t6rqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-x5ReDDv9rAJGaMmonmXKbMxY3QGfq08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720225698700-ui6at5ask0l6gke2ua579q8k4g3t6rqn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
