@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:trips_tolima/button_profile.dart';
-import 'package:trips_tolima/card_image_list.dart';
-import 'package:trips_tolima/card_image_list_profile.dart';
-import 'package:trips_tolima/gradient_profile.dart';
-import 'package:trips_tolima/info_profile.dart';
+import 'package:trips_tolima/user/ui/widgets/button_profile.dart';
+import 'package:trips_tolima/place/ui/widgets/card_image_list.dart';
+import 'package:trips_tolima/place/ui/widgets/card_image_list_profile.dart';
+import 'package:trips_tolima/user/ui/widgets/gradient_profile.dart';
+import 'package:trips_tolima/user/ui/widgets/info_profile.dart';
 
 class HeaderProfile extends StatelessWidget {
 

@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:trips_tolima/button_profile.dart';
+import 'package:trips_tolima/user/ui/widgets/button_profile.dart';
 
 
 class InfoProfile extends StatelessWidget{

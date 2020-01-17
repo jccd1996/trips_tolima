@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trips_tolima/review_list.dart';
+import 'package:trips_tolima/place/ui/widgets/review_list.dart';
 
-import 'description_place.dart';
+import '../widgets/description_place.dart';
 import 'header_appbar.dart';
 
 // ignore: must_be_immutable

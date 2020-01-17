@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:trips_tolima/profile_trips.dart';
-import 'package:trips_tolima/search_trips.dart';
+import 'package:trips_tolima/user/ui/screens/profile_trips.dart';
+import 'package:trips_tolima/place/ui/screens/search_trips.dart';
 
-import 'home_trips.dart';
+import 'place/ui/screens/home_trips.dart';
 
 class PlatziTripsCupertino extends StatelessWidget{
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trips_tolima/header_profile.dart';
+import 'package:trips_tolima/user/ui/screens/header_profile.dart';
 
-import 'card_image_list_profile.dart';
+import '../../../place/ui/widgets/card_image_list_profile.dart';
 
 class ProfileTrips extends StatelessWidget{
 

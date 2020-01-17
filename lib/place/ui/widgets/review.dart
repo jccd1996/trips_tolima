@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trips_tolima/description_place.dart';
+import 'package:trips_tolima/place/ui/widgets/description_place.dart';
 
 class Review extends StatelessWidget {
 

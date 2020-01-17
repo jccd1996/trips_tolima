@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:trips_tolima/floating_action_button_green.dart';
+import 'package:trips_tolima/place/model/place.dart';
+import 'package:trips_tolima/widgets/floating_action_button_green.dart';
 
 class CardImageProfile extends StatelessWidget {
   String pathImage = "assets/img/ibague1.jpg";
+  Place place;
 
-  CardImageProfile(this.pathImage);
+  CardImageProfile(this.pathImage, this.place);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class CardImageProfile extends StatelessWidget {
       alignment: Alignment(0.9, 0.0),
     );
     final title = new Text(
-      'Knucles Mountains',
+      place.name,
       textAlign: TextAlign.start,
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
     );
@@ -40,7 +42,7 @@ class CardImageProfile extends StatelessWidget {
     final textDescription = Container(
         margin: EdgeInsets.only(top: 10.0),
         child: new Text(
-          'Es una breve descripcion de esta cosa que hace mas cosas',
+          place.where,
           textAlign: TextAlign.start,
           style: TextStyle(fontSize: 13, color: Colors.grey.withOpacity(0.8)),
         ));
@@ -48,7 +50,7 @@ class CardImageProfile extends StatelessWidget {
     final steps = Container(
         margin: EdgeInsets.only(top: 5.0),
         child: new Text(
-          'Steps: 23260',
+          'Steps: ' + place.steps,
           textAlign: TextAlign.start,
           style: TextStyle(
               fontSize: 18, color: Colors.orangeAccent.withOpacity(0.8)),
