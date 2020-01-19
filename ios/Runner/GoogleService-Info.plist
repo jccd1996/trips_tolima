@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>720225698700-3c21t750v3apkr8n10jp0r1tenk8deln.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.720225698700-3c21t750v3apkr8n10jp0r1tenk8deln</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>720225698700-cs9aj6deu94iodrjkl6967b2qgq4af7f.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAPz4Fa8_gtpM1UyipLonQtxTCQArMaBUU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>720225698700</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.jccd.tripsTolima</string>
+	<key>PROJECT_ID</key>
+	<string>tolimatrips</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tolimatrips.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:720225698700:ios:1303c2df8296c117480ca9</string>
+	<key>DATABASE_URL</key>
+	<string>https://tolimatrips.firebaseio.com</string>
+</dict>
+</plist>

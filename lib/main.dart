@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:trips_tolima/platzi_trips.dart';
-import 'package:trips_tolima/user/bloc/block_user.dart';
+import 'package:trips_tolima/user/bloc/bloc_user.dart';
+import 'package:trips_tolima/user/ui/screens/sign_in_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: PlatziTrips(),
+         // home: PlatziTrips(),
+          home: SignInScreen(),
         ),
         bloc: UserBloc());
   }
