@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:trips_tolima/platzi_trips.dart';
 import 'package:trips_tolima/user/bloc/bloc_user.dart';
 import 'package:trips_tolima/widgets/button_green.dart';
 import 'package:trips_tolima/widgets/gradient_back.dart';
@@ -16,7 +17,21 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     userBloc = BlocProvider.of(context);
-    return signInGoogleUI();
+    return _handleCurrentSession();
+  }
+
+  Widget _handleCurrentSession(){
+    return StreamBuilder(
+      stream: userBloc.authStatus,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        //snapshot- data - Object User
+        if(!snapshot.hasData || snapshot.hasError) {
+          return signInGoogleUI();
+        } else {
+          return PlatziTrips();
+        }
+      },
+    );
   }
 
   Widget signInGoogleUI() {
@@ -39,6 +54,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ButtonGreen(
                 text: "Login with Gmail",
                 onPressed: (){
+                  userBloc.signOut();
                   userBloc.signIn().then((FirebaseUser user) => print("El usuario es ${user.displayName}"));
                 },
                 width: 300.0,

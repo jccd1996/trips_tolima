@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:trips_tolima/place/ui/screens/home_trips.dart';
 import 'package:trips_tolima/platzi_trips_cupertino.dart';
+import 'package:trips_tolima/user/bloc/bloc_user.dart';
 import 'package:trips_tolima/user/ui/screens/profile_trips.dart';
 import 'package:trips_tolima/place/ui/screens/search_trips.dart';
 
@@ -13,11 +15,15 @@ class PlatziTrips extends StatefulWidget {
 
 class _PlatziTrips extends State<PlatziTrips> {
   int indexTap = 0;
-
+  //TODO revisar el bloc de profile trips
   final List<Widget> widgetsChildren = [
     HomeTrips(),
     SearchTrips(),
-    ProfileTrips()
+    BlocProvider<UserBloc>(
+      bloc: UserBloc(),
+      child: ProfileTrips(),
+    )
+    //ProfileTrips()
   ];
 
   void onTapTapped(int index){

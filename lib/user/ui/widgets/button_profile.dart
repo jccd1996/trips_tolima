@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ButtonProfile extends StatefulWidget{
-
+class ButtonProfile extends StatefulWidget {
+  final VoidCallback onPressed;
   final Icon iconImage;
   final double size;
-  ButtonProfile(this.iconImage, this.size);
+
+  ButtonProfile(this.iconImage, this.size, @required this.onPressed);
 
   @override
   State<StatefulWidget> createState() {
@@ -12,8 +13,7 @@ class ButtonProfile extends StatefulWidget{
   }
 }
 
-class _ButtonProfile extends State<ButtonProfile>{
-
+class _ButtonProfile extends State<ButtonProfile> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -28,7 +28,7 @@ class _ButtonProfile extends State<ButtonProfile>{
             icon: widget.iconImage,
             color: Color(0xFF584CD1),
             iconSize: widget.size,
-            onPressed: () {},
+            onPressed: widget.onPressed,
           ),
         ),
       ),
