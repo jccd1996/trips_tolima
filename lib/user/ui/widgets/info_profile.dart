@@ -122,7 +122,10 @@ class InfoProfile extends StatelessWidget{
     } else {
       print("Logueado");
       print(snapshot.data);
-      user = User (snapshot.data.displayName,snapshot.data.email,snapshot.data.photoUrl);
+      user = User (
+          name: snapshot.data.displayName,
+          email: snapshot.data.email,
+          photoURL: snapshot.data.photoUrl);
       return UserInfo(user);
     }
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:trips_tolima/platzi_trips.dart';
 import 'package:trips_tolima/user/bloc/bloc_user.dart';
+import 'package:trips_tolima/user/model/user.dart';
 import 'package:trips_tolima/widgets/button_green.dart';
 import 'package:trips_tolima/widgets/gradient_back.dart';
 
@@ -55,7 +56,14 @@ class _SignInScreenState extends State<SignInScreen> {
                 text: "Login with Gmail",
                 onPressed: (){
                   userBloc.signOut();
-                  userBloc.signIn().then((FirebaseUser user) => print("El usuario es ${user.displayName}"));
+                  userBloc.signIn().then((FirebaseUser user) {
+                    userBloc.updateUserData(User(
+                      uid: user.uid,
+                      name: user.displayName,
+                      email: user.email,
+                      photoURL: user.photoUrl
+                    ));
+                  });
                 },
                 width: 300.0,
                 height: 50.0,

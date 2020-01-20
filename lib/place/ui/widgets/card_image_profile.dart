@@ -3,10 +3,9 @@ import 'package:trips_tolima/place/model/place.dart';
 import 'package:trips_tolima/widgets/floating_action_button_green.dart';
 
 class CardImageProfile extends StatelessWidget {
-  String pathImage = "assets/img/ibague1.jpg";
   Place place;
 
-  CardImageProfile(this.pathImage, this.place);
+  CardImageProfile(this.place);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,9 @@ class CardImageProfile extends StatelessWidget {
             ),
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    fit: BoxFit.cover, image: AssetImage(pathImage)),
+                    fit: BoxFit.cover,
+                    //image: AssetImage(pathImage)
+                    image: NetworkImage(place.urlImage)),
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
                 shape: BoxShape.rectangle,
                 boxShadow: <BoxShadow>[
@@ -42,7 +43,7 @@ class CardImageProfile extends StatelessWidget {
     final textDescription = Container(
         margin: EdgeInsets.only(top: 10.0),
         child: new Text(
-          place.where,
+          place.description,
           textAlign: TextAlign.start,
           style: TextStyle(fontSize: 13, color: Colors.grey.withOpacity(0.8)),
         ));
@@ -50,7 +51,7 @@ class CardImageProfile extends StatelessWidget {
     final steps = Container(
         margin: EdgeInsets.only(top: 5.0),
         child: new Text(
-          'Steps: ' + place.steps,
+          'Hearth: ' + place.likes.toString(),
           textAlign: TextAlign.start,
           style: TextStyle(
               fontSize: 18, color: Colors.orangeAccent.withOpacity(0.8)),
@@ -58,12 +59,7 @@ class CardImageProfile extends StatelessWidget {
 
     final description = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        title,
-        textDescription,
-        steps,
-        buttonFav
-      ],
+      children: <Widget>[title, textDescription, steps, buttonFav],
     );
 
     final cardContainer = Center(
