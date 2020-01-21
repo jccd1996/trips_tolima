@@ -1,5 +1,9 @@
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:trips_tolima/place/ui/screens/add_place_screen.dart';
 import 'package:trips_tolima/user/bloc/bloc_user.dart';
 import 'package:trips_tolima/user/model/user.dart';
 import 'package:trips_tolima/user/ui/widgets/button_profile.dart';
@@ -37,7 +41,10 @@ class HeaderProfile extends StatelessWidget {
     );
     final bPlus = Container(
       child: ButtonProfile(plus,sizeIcon,
-          ()=> {}),
+          () {
+        File image;
+        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => AddPlaceScreen(image: image)));
+          }),
       margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 200.0),
     );
     final bCloseSession = Container(
