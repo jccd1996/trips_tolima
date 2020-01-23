@@ -10,6 +10,8 @@ class CardImageWithFabIcon extends StatelessWidget {
   final IconData iconData;
   final String pathImage;
 
+
+
   CardImageWithFabIcon({
     Key key,
     @required this.pathImage,
@@ -22,6 +24,8 @@ class CardImageWithFabIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     final card = Container(
         height: height,
         width: width,

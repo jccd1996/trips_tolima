@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:trips_tolima/place/model/place.dart';
 import 'package:trips_tolima/user/model/user.dart';
 import 'package:trips_tolima/user/repository/auth_repository.dart';
 import 'package:trips_tolima/user/repository/cloud_firestore_api.dart';
@@ -21,16 +22,16 @@ class UserBloc implements Bloc {
 
   //Casos de uso
   //1. SignIn a la aplicación con Google
+  Future<FirebaseUser> signIn()=>_authRepository.signInFirebase();
 
-  Future<FirebaseUser> signIn(){
-    return _authRepository.signInFirebase();
-  }
 
   //2. Registrar usuario en base de datos
   final _cloudFirestoreRepository = CloudFirestoreRepository();
   void updateUserData(User user) => _cloudFirestoreRepository.updateUserDataFirestore(user);
 
-  signOut() {
+  Future<void> updatePlaceData(Place place) => _cloudFirestoreRepository.updatePlaceData(place);
+
+    signOut() {
     _authRepository.signOut();
   }
 
