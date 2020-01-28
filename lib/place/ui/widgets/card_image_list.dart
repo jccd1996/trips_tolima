@@ -1,52 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:trips_tolima/place/ui/widgets/card_image.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:trips_tolima/user/bloc/bloc_user.dart';
+
+import 'card_image.dart';
 
 class CardImageList extends StatelessWidget {
+  UserBloc userBloc;
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    userBloc = BlocProvider.of(context);
 
-    double width = 300;
-    double height = 350;
-    double left = 20;
     return Container(
       height: 350.0,
-      child: ListView(
+      child: StreamBuilder(
+        stream: userBloc.placesStream,
+        builder: (context, AsyncSnapshot snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return CircularProgressIndicator();
+            case ConnectionState.active:
+              return listViewPlaces(userBloc.buildPlaces(snapshot.data.documents));
+            case ConnectionState.done:
+              return listViewPlaces(userBloc.buildPlaces(snapshot.data.documents));
+            case ConnectionState.none:
+              return CircularProgressIndicator();
+            default:
+              return CircularProgressIndicator();
+          }
+        },
+      ),
+    );
+  }
+
+  Widget listViewPlaces(List<CardImageWithFabIcon> placesCard){
+    return ListView(
         padding: EdgeInsets.all(25.0),
         scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          CardImageWithFabIcon(
-              pathImage: "assets/img/ibague1.jpg",
-              iconData: Icons.favorite_border,
-              width: width,
-              height: height,
-              left: left),
-          CardImageWithFabIcon(
-              pathImage: "assets/img/ibague2.jpg",
-              iconData: Icons.favorite_border,
-              width: width,
-              height: height,
-              left: left),
-          CardImageWithFabIcon(
-              pathImage: "assets/img/ibague3.jpeg",
-              iconData: Icons.favorite_border,
-              width: width,
-              height: height,
-              left: left),
-          CardImageWithFabIcon(
-              pathImage: "assets/img/ibague4.jpg",
-              iconData: Icons.favorite_border,
-              width: width,
-              height: height,
-              left: left),
-          CardImageWithFabIcon(
-              pathImage: "assets/img/ibague5.jpg",
-              iconData: Icons.favorite_border,
-              width: width,
-              height: height,
-              left: left)
-        ],
-      ),
+        children: placesCard,
     );
   }
 }

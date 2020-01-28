@@ -40,11 +40,11 @@ class CardImageListProfile extends StatelessWidget {
             case ConnectionState.done:
               return ListView(
                   scrollDirection: Axis.vertical,
-                  children: userBloc.buildPlaces(snapshot.data.documents));
+                  children: userBloc.buildMyPlaces(snapshot.data.documents));
             case ConnectionState.active:
               return ListView(
                   scrollDirection: Axis.vertical,
-                  children: userBloc.buildPlaces(snapshot.data.documents));
+                  children: userBloc.buildMyPlaces(snapshot.data.documents));
             case ConnectionState.none:
               return CircularProgressIndicator();
 

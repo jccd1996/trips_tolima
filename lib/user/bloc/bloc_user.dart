@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:trips_tolima/place/model/place.dart';
 import 'package:trips_tolima/place/repository/firebase_storage_repository.dart';
+import 'package:trips_tolima/place/ui/widgets/card_image.dart';
 import 'package:trips_tolima/place/ui/widgets/card_image_profile.dart';
 import 'package:trips_tolima/user/model/user.dart';
 import 'package:trips_tolima/user/repository/auth_repository.dart';
@@ -43,15 +44,19 @@ class UserBloc implements Bloc {
 
   Stream<QuerySnapshot> get placesStream => placesListStream;
 
-  List<CardImageProfile> buildPlaces(
+  List<CardImageProfile> buildMyPlaces(
+          List<DocumentSnapshot> placesListSnapshot) =>
+      _cloudFirestoreRepository.buildMyPlaces(placesListSnapshot);
+
+  List<CardImageWithFabIcon> buildPlaces(
           List<DocumentSnapshot> placesListSnapshot) =>
       _cloudFirestoreRepository.buildPlaces(placesListSnapshot);
 
   Stream<QuerySnapshot> myPlacesListStream(String uid) => Firestore.instance
       .collection(CloudFirestoreAPI().PLACES)
       .where("userOwner",
-          isEqualTo: Firestore.instance
-              .document("${CloudFirestoreAPI().USERS}/$uid"))
+          isEqualTo:
+              Firestore.instance.document("${CloudFirestoreAPI().USERS}/$uid"))
       .snapshots();
 
   final _firebaseStorageRepository = FirebaseStorageRepository();
