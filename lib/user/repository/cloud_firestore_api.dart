@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:trips_tolima/place/model/place.dart';
+import 'package:trips_tolima/place/ui/widgets/card_image_profile.dart';
 import 'package:trips_tolima/user/model/user.dart';
 
 class CloudFirestoreAPI {
@@ -33,11 +34,33 @@ class CloudFirestoreAPI {
           'name' : place.name,
           'description': place.description,
           'likes': place.likes,
-          'userOwner': "$USERS/${user.uid}"//reference
-        }
-      );
+          'urlImage': place.urlImage,
+          'userOwner': _db.document("$USERS/${user.uid}")//reference
+        }).then((DocumentReference dr){
+          dr.get().then((DocumentSnapshot snapshot){
+            snapshot.documentID; //ID Place Referencia array
+            DocumentReference refUsers = _db.collection(USERS).document(user.uid);
+            refUsers.updateData(({
+              'myPlaces' : FieldValue.arrayUnion([_db.document("$USERS/${snapshot.documentID}")])
+            }));
+          });
+      });
     });
+  }
 
-
+  List<CardImageProfile> buildPlaces(List<DocumentSnapshot> placesListSnapshot){
+    List<CardImageProfile> profilePlaces = List<CardImageProfile>();
+    placesListSnapshot.forEach((p){
+      Place place = Place(
+        name: p.data['name'],
+        description: p.data['description'],
+        urlImage: p.data['urlImage'],
+        likes: p.data['likes']
+      );
+      profilePlaces.add(CardImageProfile(
+        place
+      ));
+    });
+    return profilePlaces;
   }
 }

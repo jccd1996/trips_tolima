@@ -26,6 +26,7 @@ class UserInfo extends StatelessWidget {
         ),
       ),
     );
+    print(user.name);
 
     final userEmail = Container(
       margin: EdgeInsets.only(

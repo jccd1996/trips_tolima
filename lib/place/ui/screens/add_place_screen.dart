@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:trips_tolima/place/model/place.dart';
@@ -101,20 +103,34 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                   child: ButtonPurple(
                     buttonText: "Add Place",
                     onPressed: () {
-                      //1. Firebase Storage
-                      // url -
 
-                      //2. Cloud firestore
-                      //Place - title, description, url, userOwner, likes
+                      //ID del usuario
+                      userBloc.currentUser.then((FirebaseUser user) {
+                        if(user != null){
+                          //1. Firebase Storage
+                          // url -
+                          String uid = user.uid;
+                          String path = "${uid}/${DateTime.now().toString()}.jpg";
+                          userBloc.uploadFile(path, widget.image).then((StorageUploadTask storageUploadTask){
+                            storageUploadTask.onComplete.then((StorageTaskSnapshot snapshot){
+                              snapshot.ref.getDownloadURL().then((urlImage){
+                                print("URLIMAGE: $urlImage");
 
-                      userBloc.updatePlaceData(Place(
-                        name: _controllerTitlePlace.text,
-                        description: _controllerDescription.text,
-                        likes: 0,
-                        
-                      )).whenComplete((){
-                        print("TERMINO");
-                        Navigator.pop(context);
+                                //2. Cloud firestore
+                                //Place - title, description, url, userOwner, likes
+                                userBloc.updatePlaceData(Place(
+                                  name: _controllerTitlePlace.text,
+                                  description: _controllerDescription.text,
+                                  urlImage: urlImage,
+                                  likes: 0,
+                                )).whenComplete((){
+                                  print("TERMINO");
+                                  Navigator.pop(context);
+                                });
+                              });
+                            });
+                          });
+                        }
                       });
                     },
                   ),

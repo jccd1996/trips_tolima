@@ -14,6 +14,8 @@ class HeaderProfile extends StatelessWidget {
   UserBloc userBloc;
   User user;
 
+  HeaderProfile(this.user);
+
   @override
   Widget build(BuildContext context) {
     userBloc = BlocProvider.of(context);
@@ -70,7 +72,7 @@ class HeaderProfile extends StatelessWidget {
     return Stack(
       children: <Widget>[
         GradientProfile("Perfíl"),
-        InfoProfile(),
+        InfoProfile(user),
         optionsProfile,
       ],
     );

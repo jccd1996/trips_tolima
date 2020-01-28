@@ -31,7 +31,7 @@ class CardImageProfile extends StatelessWidget {
                       offset: Offset(0.0, 7.0))
                 ])));
     final buttonFav = Container(
-      child: FloatingActionButtonGreen(),
+      child: FloatingActionButtonGreen(iconData: Icons.favorite_border, onPressed: (){}),
       alignment: Alignment(0.9, 0.0),
     );
     final title = new Text(
@@ -51,7 +51,7 @@ class CardImageProfile extends StatelessWidget {
     final steps = Container(
         margin: EdgeInsets.only(top: 5.0),
         child: new Text(
-          'Hearth: ' + place.likes.toString(),
+          'Hearth: ' + (place.likes ?? 0).toString(),
           textAlign: TextAlign.start,
           style: TextStyle(
               fontSize: 18, color: Colors.orangeAccent.withOpacity(0.8)),
